@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class HeroesService {
 
-  private heores:Heroe[] = [
+  private heroes:Heroe[] = [
     {
       nombre: "Aquaman",
       bio: "El poder más reconocido de Aquaman es la capacidad telepática para comunicarse con la vida marina, la cual puede convocar a grandes distancias.",
@@ -62,11 +62,27 @@ export class HeroesService {
   }
 
   getHeroes(){
-    return this.heores;
+    return this.heroes;
   }
 
   getHeroe(idx: number){
-    return this.heores[idx]
+    return this.heroes[idx]
+  }
+
+  buscarHeroes(termino: string){
+    let heroesArr: Heroe[] = [];
+    termino = termino.toLowerCase();
+
+    for(let i = 0; i < this.heroes.length; i++){
+      let heroe = this.heroes[i];
+      let nombre = heroe.nombre.toLowerCase();
+      if(nombre.indexOf(termino) >= 0){
+        heroe.id = i;
+        heroesArr.push(heroe);
+      }
+    }
+
+    return heroesArr;
   }
 
 }
@@ -77,4 +93,5 @@ export interface Heroe{
   img: string;
   aparicion: string;
   casa: string;
+  id?: number;
 }

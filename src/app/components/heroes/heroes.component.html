@@ -1,27 +1,6 @@
 <h1>Héroes <small>Marvel y DC</small></h1>
-<div class="card-columns">
-    <div class="card animated fadeIn fast" *ngFor="let heroe of heroes; let i = index">
-        <img class="card-img-top" src="{{heroe.img}}" alt="{{heroe.nombre}}">
-        <div class="card-body">
-            <h4 class="card-title">{{heroe.nombre}}</h4>
-            <p class="card-text">{{heroe.bio}}</p>
-            <p class="card-text"><small class="text-muted">{{heroe.aparicion}}</small></p>
-            <button (click)="verHeroe(i)" class="btn btn-block btn-outline-primary">Ver más...</button>
-            <!-- <a [routerLink]="['/heroe', i]" class="btn btn-block btn-outline-primary">
-              Ver más...
-            </a> -->
 
-        </div>
-    </div>
-    <!-- <div class="card">
-        <img class="card-img-top" src="assets/img/batman.png" alt="">
-        <div class="card-body">
-            <h4 class="card-title">Title</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit est fugiat aperiam, maiores laudantium sit numquam cumque neque. Rem ut, facere voluptatibus incidunt veniam minima velit quaerat quisquam sit quos?fsdafwe4rfa rsg fwretgre gs er
-                ferg r hger jyd jyfc</p>
-            <button type="button" class="btn btn-block btn-outline-primary">
-                  Ver más...
-                </button>
-        </div>
-    </div> -->
+<div class="card-columns">
+    <!-- <div class="card animated fadeIn fast" *ngFor="let heroe of heroes; let i = index"></div> -->
+    <app-heroe-tarjeta (heroeSeleccionado)="verHeroe($event)" [heroe]="pers" [index]="i" *ngFor="let pers of heroes; let i = index"></app-heroe-tarjeta>
 </div>
